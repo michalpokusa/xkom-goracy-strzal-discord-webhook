@@ -19,8 +19,8 @@
             "id": "envFile",
             "description": ".env file to use for debugging",
             "type": "pickString",
-            "default": "development.env",
-            "options": ["development.env", "production.env"]
+            "default": ".env.development",
+            "options": [".env.development", ".env.production"]
         }
     ]
 }
