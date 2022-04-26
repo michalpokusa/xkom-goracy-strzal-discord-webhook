@@ -1,5 +1,16 @@
-# Export from specified .env file lines that do not have '#' inside
-export $(cat $1 | grep -v '#'| xargs)
+#! /bin/bash
 
-# Run the program
-python3 program.py
+# Changing the working directory
+cd $(dirname $0)
+
+# Generating file to source from .env file
+sed '/^\w/ s/^/export /' $1 > $1.export
+
+# Sourcing the generated file
+source $1.export
+
+# Activating Python venv
+source .venv/bin/activate
+
+# Running the program
+python3 program.py > output.log
